@@ -143,5 +143,13 @@ export async function healthyCheck(rpcs: string[]): Promise<string[]> {
 
 export function getRpcsByChainIdByViem(chainId: number): string[] {
     const chain = getViemChainInfo(chainId)
-    return [...chain.rpcUrls.default.http]
+    const res = [...chain.rpcUrls.default.http]
+    // @ts-ignore
+    if (chain.rpcUrls.default.webSocket) {
+        try {
+            // @ts-ignore
+            res.push(...chain.rpcUrls.default.webSocket)
+        } catch { /* empty */ }
+    }
+    return res
 }

@@ -1,3 +1,6 @@
+import * as viemChains from 'viem/chains'
+import { ViemChainInfoNotFound } from './errors';
+
 export function buf2hex(buffer: ArrayBufferLike): string {
   // buffer is an ArrayBuffer
   return (
@@ -15,4 +18,13 @@ export const getRandomUint8Array = (length = 16) => {
 
 export function getRandomString(): string {
   return buf2hex(globalThis.crypto.getRandomValues(new Uint8Array(16)));
+}
+
+export function getViemChainInfo(chainId: number) {
+  const chainInfo = Object.values(viemChains).find((v) => v.id === chainId)
+  if (!chainInfo) {
+      throw ViemChainInfoNotFound
+  }
+
+  return chainInfo
 }

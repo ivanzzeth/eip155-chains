@@ -1,1 +1,6 @@
-export * from './utils';
+export * from './errors'
+export * from './utils'
+export * from './getChain'
+export * from './getEIP155ChainMetadata'
+export * from './getRpcs'
+// export { ChainId } from 'eth-chains'

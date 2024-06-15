@@ -8,7 +8,35 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-> A utility library for managing storages through a simple key-value pair storage interface, including localStorage, google drive, dropbox, etc.
+> Aggregate all eip155 chains in one place.
+
+# Usage
+
+```Typescript
+import { ethers } from 'ethers';
+import { getChainById } from 'eip155-chains';
+
+const chainInfo = await getChainById(viemChains.baseSepolia.id)
+console.log(`rpcs: `, chainInfo.rpc)
+
+const providers = chainInfo.rpc.map(v => new ethers.JsonRpcProvider(v))
+const provider = new ethers.FallbackProvider(providers)
+
+const blockNumber = await provider.getBlockNumber()
+console.log(blockNumber)
+```
+
+# Sources
+
+EIP155ChainInfo sources:
+
+- npm package `eth-chains`
+- [chainid.network](https://chainid.network/chains.json)
+
+Rpc nodes sources:
+
+- viem chains definition
+- [chainid.network](https://chainid.network/chains.json)
 
 [build-img]:https://github.com/ryansonshine/typescript-npm-package-template/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/ryansonshine/typescript-npm-package-template/actions/workflows/release.yml

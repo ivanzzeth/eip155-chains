@@ -1,5 +1,8 @@
 // import * as sinon from "sinon";
-import { getRandomString } from "../src";
+import * as viemChains from 'viem/chains'
+
+import { getChainById, getRandomString } from "../src";
+// import { ethers } from 'ethers';
 
 const crypto = require('crypto');
 
@@ -16,5 +19,24 @@ describe("Utils", function () {
       const v2 = getRandomString();
       expect(v1).not.toEqual(v2);
     });
+  })
+})
+
+describe("index", function () {
+  describe("test getChain", function () {
+    it("should get correct block number", async function () {
+      const chainInfo = await getChainById(viemChains.baseSepolia.id)
+      console.log(`rpcs: `, chainInfo.rpc)
+
+      expect(chainInfo.rpc.length).not.toEqual(0)
+      // const providers = chainInfo.rpc.map(v => new ethers.JsonRpcProvider(v))
+      // const provider = new ethers.FallbackProvider(providers)
+
+      // const blockNumber = await provider.getBlockNumber()
+      // await provider.destroy()
+      // await Promise.all(providers.map(provider => provider.destroy()))
+
+      // expect(blockNumber).not.toEqual(0)
+    })
   })
 })

@@ -22,7 +22,7 @@
 
 #### Source
 
-[src/getRpcs.ts:6](https://github.com/ivanzzeth/eip155-chains/blob/6f2a5a19a2b6abc8eaaee80a1a2df751ae58747a/src/getRpcs.ts#L6)
+[src/getRpcs.ts:6](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L6)
 
 ***
 
@@ -36,7 +36,7 @@
 
 #### Source
 
-[src/getRpcs.ts:7](https://github.com/ivanzzeth/eip155-chains/blob/6f2a5a19a2b6abc8eaaee80a1a2df751ae58747a/src/getRpcs.ts#L7)
+[src/getRpcs.ts:7](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L7)
 
 ***
 
@@ -50,14 +50,14 @@
 
 #### Source
 
-[src/getRpcs.ts:5](https://github.com/ivanzzeth/eip155-chains/blob/6f2a5a19a2b6abc8eaaee80a1a2df751ae58747a/src/getRpcs.ts#L5)
+[src/getRpcs.ts:5](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L5)
 
 ***
 
-### healthyCheckEanbled
+### healthyCheckEnabled
 
-> **healthyCheckEanbled**: `boolean`
+> **healthyCheckEnabled**: `boolean`
 
 #### Source
 
-[src/getChain.ts:11](https://github.com/ivanzzeth/eip155-chains/blob/6f2a5a19a2b6abc8eaaee80a1a2df751ae58747a/src/getChain.ts#L11)
+[src/getChain.ts:11](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getChain.ts#L11)

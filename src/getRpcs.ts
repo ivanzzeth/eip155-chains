@@ -19,19 +19,24 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: string[]): P
 
     // Remove all invalid rpc nodes
 
-    // Do not use ethers, it'll cause ethers version issue.
-    // res = await Promise.all(
-    //     res.map(async (rpc) => {
-    //         const provider = new ethers.JsonRpcProvider(rpc)
-    //         try {
-    //             await provider.getBlockNumber()
-    //             return rpc
-    //         } catch { /* empty */ }
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const ethers = require('ethers')
 
-    //         provider.destroy()
-    //         return null
-    //     })
-    // )
+    const jsonRpcProvider = ethers.providers ? ethers.providers.JsonRpcProvider : ethers.JsonRpcProvider
+    if (jsonRpcProvider) {
+        res = await Promise.all(
+            res.map(async (rpc) => {
+                const provider = new jsonRpcProvider(rpc)
+                try {
+                    await provider.getBlockNumber()
+                    return rpc
+                } catch { /* empty */ }
+    
+                provider.destroy()
+                return null
+            })
+        )
+    }
 
     res = res.filter((rpc) => rpc !== null)
     if (res.length == 0) {

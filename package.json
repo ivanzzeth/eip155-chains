@@ -58,6 +58,7 @@
   "dependencies": {
     "axios": "^1.6.8",
     "eth-chains": "^2.0.0",
+    "ethers": "^6.13.0",
     "tslib": "~2.6",
     "viem": "^2.14.1"
   },

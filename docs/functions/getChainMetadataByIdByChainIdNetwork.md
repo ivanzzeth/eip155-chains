@@ -18,4 +18,4 @@
 
 ## Source
 
-[src/getEIP155ChainMetadata.ts:38](https://github.com/ivanzzeth/eip155-chains/blob/885c950cdb1e7424d52ef7df29c0bc9c129fc0c3/src/getEIP155ChainMetadata.ts#L38)
+[src/getEIP155ChainMetadata.ts:32](https://github.com/ivanzzeth/eip155-chains/blob/77bf8c339fbbb256f43077c5e1e2cc73ab165bea/src/getEIP155ChainMetadata.ts#L32)

@@ -8,7 +8,7 @@ export interface EIP155Chain extends Chain {
 }
 
 export interface Options extends ApiKeys {
-    helthyCheckEanbled: boolean
+    healthyCheckEanbled: boolean
 }
 
 export async function getChainById(chainId: number, options?: Options): Promise<EIP155Chain> {
@@ -18,7 +18,7 @@ export async function getChainById(chainId: number, options?: Options): Promise<
         throw ChainNotFound
     }
 
-    chain.rpc = await getRpcsByChainId(chainId, chain.rpc, options ? options.helthyCheckEanbled : true, options)
+    chain.rpc = await getRpcsByChainId(chainId, chain.rpc, options ? options.healthyCheckEanbled : true, options)
     
     return {
         ...chain,

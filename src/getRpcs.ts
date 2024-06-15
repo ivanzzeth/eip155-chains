@@ -16,7 +16,7 @@ export interface ClassifiedRpc {
 
 const RPC_TIMEOUT = 5_000
 
-export async function getRpcsByChainId(chainId: number, extraRpcs?: string[], helthyCheckEanbled = true, apiKeys?: ApiKeys): Promise<string[]> {
+export async function getRpcsByChainId(chainId: number, extraRpcs?: string[], healthyCheckEanbled = true, apiKeys?: ApiKeys): Promise<string[]> {
     const rpcs: string[] = []
 
     // Add all rpc nodes
@@ -55,8 +55,8 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: string[], he
     res = res.filter(rpc => !rpc.includes("API_KEY"))
 
     // Remove all invalid rpc nodes
-    if (helthyCheckEanbled) {
-        res = await helthyCheck(res)
+    if (healthyCheckEanbled) {
+        res = await healthyCheck(res)
     }
 
     if (res.length == 0) {
@@ -93,7 +93,7 @@ export function isValidRpcProtocol(rpc: string): boolean {
     return rpc.startsWith("http://") || rpc.startsWith("https://") || rpc.startsWith("ws://") || rpc.startsWith("wss://")
 }
 
-export async function helthyCheck(rpcs: string[]): Promise<string[]> {
+export async function healthyCheck(rpcs: string[]): Promise<string[]> {
     rpcs = await Promise.all(
         rpcs.map(async (rpc) => {
             // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -1,5 +1,5 @@
 // import * as sinon from "sinon";
-import * as viemChains from 'viem/chains'
+// import * as viemChains from 'viem/chains'
 
 import { getChainById, getRandomString } from "../src";
 // import { ethers } from 'ethers';
@@ -25,7 +25,7 @@ describe("Utils", function () {
 describe("index", function () {
   describe("test getChain", function () {
     it("should get correct block number", async function () {
-      const chainInfo = await getChainById(viemChains.baseSepolia.id)
+      const chainInfo = await getChainById(421614)
       console.log(`rpcs: `, chainInfo.rpc)
 
       expect(chainInfo.rpc.length).not.toEqual(0)

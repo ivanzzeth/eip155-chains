@@ -4,6 +4,7 @@ import { getRpcsByChainId } from "./getRpcs";
 import { ChainNotFound } from "./errors";
 
 export async function getChainById(chainId: number): Promise<Chain> {
+    console.log(`getChainById ${chainId}`)
     const chain = await getChainMetadataById(chainId)
 
     if (!chain) {

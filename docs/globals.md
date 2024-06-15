@@ -18,6 +18,7 @@
 - [getChainMetadataById](functions/getChainMetadataById.md)
 - [getChainMetadataByIdByChainIdNetwork](functions/getChainMetadataByIdByChainIdNetwork.md)
 - [getChainMetadataByIdByEthChains](functions/getChainMetadataByIdByEthChains.md)
+- [getChainMetadataByIdByLocalFile](functions/getChainMetadataByIdByLocalFile.md)
 - [getRandomString](functions/getRandomString.md)
 - [getRandomUint8Array](functions/getRandomUint8Array.md)
 - [getRpcsByChainId](functions/getRpcsByChainId.md)

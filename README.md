@@ -31,7 +31,7 @@ console.log(blockNumber)
 EIP155ChainInfo sources:
 
 - npm package `eth-chains`
-- [chainid.network](https://chainid.network/chains.json)
+- [chainid.network](https://chainid.network/chains.json) and cached it in repo
 
 Rpc nodes sources:
 

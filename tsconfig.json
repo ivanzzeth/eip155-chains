@@ -20,7 +20,8 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "esModuleInterop": true,
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "skipLibCheck": true,
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

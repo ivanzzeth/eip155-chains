@@ -16,7 +16,7 @@ export interface ClassifiedRpc {
 
 const RPC_TIMEOUT = 5_000
 
-export async function getRpcsByChainId(chainId: number, extraRpcs?: string[], healthyCheckEanbled = true, apiKeys?: ApiKeys): Promise<string[]> {
+export async function getRpcsByChainId(chainId: number, extraRpcs?: string[], healthyCheckEanbled = false, apiKeys?: ApiKeys): Promise<string[]> {
     const rpcs: string[] = []
 
     // Add all rpc nodes

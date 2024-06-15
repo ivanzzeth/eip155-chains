@@ -49,7 +49,7 @@
     "prettier": "prettier --config .prettierrc --write .",
     "lint": "eslint . --ext .ts --ext .mts",
     "test": "npm run clean && jest --coverage --detectOpenHandles",
-    "prepublish": "npm run build:release",
+    "prepublish": "npm run build",
     "test:watch": "jest --watch"
   },
   "volta": {

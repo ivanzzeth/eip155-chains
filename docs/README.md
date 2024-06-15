@@ -20,10 +20,25 @@
 import { ethers } from 'ethers';
 import { getChainById } from 'eip155-chains';
 
-const chainInfo = await getChainById(viemChains.baseSepolia.id)
+const chainInfo = await getChainById(chainId, {
+  INFURA_API_KEY: 'Your INFURA_API_KEY',
+  ALCHEMY_API_KEY: 'Your ALCHEMY_API_KEY'
+})
 console.log(`rpcs: `, chainInfo.rpc)
+console.log(`classifiedRpc.https: ${chainInfo.classifiedRpc.https}`)
 
-const providers = chainInfo.rpc.map(v => new ethers.JsonRpcProvider(v))
+// You can use https only
+// const providers = chainInfo.classifiedRpc.https.map(v => new ethers.JsonRpcProvider(v))
+
+// or setup provider according to protocol
+const providers = chainInfo.rpc.map(rpc => {
+  if (jsonRpcProvider && rpc.startsWith("http://") || rpc.startsWith("https://")) {
+    return new jsonRpcProvider(rpc)
+  } else /** if (wsRpcProvider && rpc.startsWith("ws://") || rpc.startsWith("wss://")) */ {
+    return new wsRpcProvider(rpc)
+  }
+})
+
 const provider = new ethers.FallbackProvider(providers)
 
 const blockNumber = await provider.getBlockNumber()

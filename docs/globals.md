@@ -4,6 +4,13 @@
 
 # eip155-chains
 
+## Interfaces
+
+- [ApiKeys](interfaces/ApiKeys.md)
+- [ClassifiedRpc](interfaces/ClassifiedRpc.md)
+- [EIP155Chain](interfaces/EIP155Chain.md)
+- [Options](interfaces/Options.md)
+
 ## Variables
 
 - [ChainNotFound](variables/ChainNotFound.md)
@@ -24,3 +31,7 @@
 - [getRpcsByChainId](functions/getRpcsByChainId.md)
 - [getRpcsByChainIdByViem](functions/getRpcsByChainIdByViem.md)
 - [getViemChainInfo](functions/getViemChainInfo.md)
+- [healthyCheck](functions/healthyCheck.md)
+- [isValidRpcProtocol](functions/isValidRpcProtocol.md)
+- [sleep](functions/sleep.md)
+- [splitRpcsByProtocol](functions/splitRpcsByProtocol.md)

@@ -20,4 +20,4 @@
 
 ## Source
 
-[src/getRpcs.ts:4](https://github.com/ivanzzeth/eip155-chains/blob/d80903e392fb1cc93f7f2ffa6ece3d0d5c6e67ab/src/getRpcs.ts#L4)
+[src/getRpcs.ts:4](https://github.com/ivanzzeth/eip155-chains/blob/16a26afaa05f032515c0b536c027c572cc678b10/src/getRpcs.ts#L4)

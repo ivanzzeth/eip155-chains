@@ -48,7 +48,7 @@
     "build:release": "npm run clean && npm run build && npm run build:docs",
     "prettier": "prettier --config .prettierrc --write .",
     "lint": "eslint . --ext .ts --ext .mts",
-    "test": "npm run clean && jest --coverage",
+    "test": "npm run clean && jest --coverage --detectOpenHandles",
     "prepublish": "npm run build:release",
     "test:watch": "jest --watch"
   },

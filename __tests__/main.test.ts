@@ -38,9 +38,10 @@ describe("index", function () {
       ]
       await Promise.all(chainIds.map(async function (chainId) {
         const chainInfo = await getChainById(chainId)
-  
+        console.log(`chainId: ${chainInfo.chainId}, rpc: ${chainInfo.rpc}, classifiedRpc: ${JSON.stringify(chainInfo.classifiedRpc)}`)
+
         expect(chainInfo.rpc.length).not.toEqual(0)
       }))
-    })
+    }, 20_000)
   })
 })

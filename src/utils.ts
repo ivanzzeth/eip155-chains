@@ -28,3 +28,7 @@ export function getViemChainInfo(chainId: number) {
 
   return chainInfo
 }
+
+export async function sleep(delay: number) {
+    return new Promise((resolve) => setTimeout(resolve, delay))
+}

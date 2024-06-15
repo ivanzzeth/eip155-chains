@@ -14,4 +14,4 @@
 
 ## Source
 
-[src/utils.ts:19](https://github.com/ivanzzeth/eip155-chains/blob/77bf8c339fbbb256f43077c5e1e2cc73ab165bea/src/utils.ts#L19)
+[src/utils.ts:19](https://github.com/ivanzzeth/eip155-chains/blob/f60934fd3f9025ea23c17b116587bcfacdf37fe4/src/utils.ts#L19)

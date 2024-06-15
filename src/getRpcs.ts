@@ -32,7 +32,8 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: string[]): P
                     return rpc
                 } catch { /* empty */ }
     
-                provider.destroy()
+                if (provider.destroy) provider.destroy()
+                
                 return null
             })
         )

@@ -43,6 +43,10 @@ export interface ApiKeys {
     ANKR_API_KEY?: string
 }
 
+export interface Filters {
+    features?: Array<RpcFeature>
+}
+
 export const RPC_TIMEOUT = 5_000
 
 export * from './getRpcList'

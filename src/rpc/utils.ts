@@ -1,4 +1,4 @@
-import { ClassifiedRpc, registeredRpcServices, RpcList } from "."
+import { ClassifiedRpc, registeredRpcServices, RPC, RpcFeature, RpcList } from "."
 
 export function splitRpcsByProtocol(rpcs: RpcList): ClassifiedRpc {
     const classifiedRpc: ClassifiedRpc = {
@@ -32,6 +32,28 @@ export function fulfillRpcFeatures(rpcs: RpcList): void {
             }
         }
     }
+}
+
+export function filterRpcListByFeatures(rpcs: RpcList, features?: Array<RpcFeature>): RpcList {
+    if (!features || features.length == 0) {
+        return rpcs
+    }
+
+    const res = new Array<RPC>()
+    for (const rpc of rpcs) {
+        let count = 0
+        for (const feature of features) {
+            if (rpc.features && rpc.features.includes(feature)) {
+                count++
+            }
+        }
+
+        if (count == features.length) {
+            res.push(rpc)
+        }
+    }
+
+    return res
 }
 
 export function isValidRpcProtocol(rpc: string): boolean {

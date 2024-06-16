@@ -1,8 +1,8 @@
-import { ApiKeys, fulfillRpcFeatures, isValidRpcProtocol, registeredRpcServices, RPC_TIMEOUT, RpcList, RpcUrl } from "."
+import { ApiKeys, filterRpcListByFeatures, Filters, fulfillRpcFeatures, isValidRpcProtocol, registeredRpcServices, RPC_TIMEOUT, RpcList, RpcUrl } from "."
 import { RpcNotFound } from "../errors"
 import { sleep } from "../utils"
 
-export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, healthyCheckEanbled = false, apiKeys?: ApiKeys): Promise<RpcList> {
+export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, healthyCheckEanbled = false, apiKeys?: ApiKeys, filters?: Filters): Promise<RpcList> {
     const rpcs: RpcList = []
 
     // Add all rpc nodes
@@ -47,6 +47,13 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, hea
 
     // Remove rpc nodes needing API key
     res = res.filter(rpc => !rpc.url.includes("API_KEY"))
+
+    // Apply filters
+    if (filters) {
+        if (filters.features) {
+            res = filterRpcListByFeatures(res, filters.features)
+        }
+    }
 
     // Remove all invalid rpc nodes
     if (healthyCheckEanbled) {

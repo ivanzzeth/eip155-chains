@@ -5,11 +5,13 @@ import { sleep } from "../utils"
 export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, healthyCheckEanbled = false, apiKeys?: ApiKeys, filters?: Filters): Promise<RpcList> {
     const rpcs: RpcList = []
 
-    // Add all rpc nodes
-    for (const service of registeredRpcServices) {
-        const list = await service.getRpcList(chainId)
-        rpcs.push(...list)
-    }
+    // Add all rpc nodes from services
+    await Promise.all(
+        registeredRpcServices.map(async (service) => {
+            const list = await service.getRpcList(chainId)
+            rpcs.push(...list)
+        })
+    )
 
     if (extraRpcs) {
         rpcs.push(...extraRpcs)

@@ -20,4 +20,4 @@
 
 ## Source
 
-[src/getChain.ts:16](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/getChain.ts#L16)
+[src/getChain.ts:16](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/getChain.ts#L16)

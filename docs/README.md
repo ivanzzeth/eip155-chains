@@ -18,7 +18,7 @@
 
 ```Typescript
 import { ethers } from 'ethers';
-import { getChainById } from 'eip155-chains';
+import { getChainById, getEthersProvider } from 'eip155-chains';
 
 const options = {
   apiKey: {
@@ -36,7 +36,7 @@ console.log(`rpcs: `, chainInfo.rpc)
 console.log(`classifiedRpc.https: ${chainInfo.classifiedRpc.https}`)
 
 // You can use https only
-// const providers = chainInfo.classifiedRpc.https.map(rpc => new ethers.JsonRpcProvider(rpc.url))
+const providers = chainInfo.classifiedRpc.https.map(rpc => new ethers.JsonRpcProvider(rpc.url))
 
 // or setup provider according to protocol
 const providers = chainInfo.rpc.map(url => {
@@ -49,8 +49,14 @@ const providers = chainInfo.rpc.map(url => {
 
 const provider = new ethers.FallbackProvider(providers)
 
+// or using getEthersProvider
+const [provider, stop] = await getEthersProvider(chainId, options)
+
 const blockNumber = await provider.getBlockNumber()
 console.log(blockNumber)
+
+// Don't forget release provider
+await stop()
 ```
 
 # Sources

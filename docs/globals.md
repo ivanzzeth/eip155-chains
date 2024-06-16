@@ -39,6 +39,7 @@
 ## Functions
 
 - [buf2hex](functions/buf2hex.md)
+- [destroyEthersProvider](functions/destroyEthersProvider.md)
 - [filterRpcListByFeatures](functions/filterRpcListByFeatures.md)
 - [fulfillRpcFeatures](functions/fulfillRpcFeatures.md)
 - [getChainById](functions/getChainById.md)
@@ -46,6 +47,7 @@
 - [getChainMetadataByIdByChainIdNetwork](functions/getChainMetadataByIdByChainIdNetwork.md)
 - [getChainMetadataByIdByEthChains](functions/getChainMetadataByIdByEthChains.md)
 - [getChainMetadataByIdByLocalFile](functions/getChainMetadataByIdByLocalFile.md)
+- [getEthersProvider](functions/getEthersProvider.md)
 - [getRandomString](functions/getRandomString.md)
 - [getRandomUint8Array](functions/getRandomUint8Array.md)
 - [getRpcsByChainId](functions/getRpcsByChainId.md)

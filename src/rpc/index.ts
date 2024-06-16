@@ -1,4 +1,4 @@
-import { ViemService } from './services'
+import { FlashbotsService, OneRpcService, ViemService } from './services'
 
 export interface ClassifiedRpc {
     http: RPC[]
@@ -16,14 +16,27 @@ export type RpcUrl = `http://${string}` | `https://${string}` | `ws://${string}`
 
 export type RpcList = Array<RPC>
 
+export type RpcFeatureFree = 'free to use'
+export type RpcFeatureLoadBalance = 'load balance'
 export type RpcFeaturePrivacy = 'privacy'
 export type RpcFeatureMevProtection = 'MEV protection'
-export type RpcFeatureLoadBalance = 'load balance'
-export type RpcFeatureFree = 'free to use'
-export type RpcFeature = RpcFeaturePrivacy | RpcFeatureMevProtection | RpcFeatureLoadBalance | RpcFeatureFree
+// e.g. [1RPC](https://www.1rpc.io/): Transaction sanitizers defend against phishing threats in Web3, in real-time.
+// Anti-phishing rules. Malicious address scanning. Explorer contract verification.
+export type RpcFeaturePhishingProtection = 'phishing protection'
+// only whitelisted smart contract can be executed
+export type RpcFeatureSmartContractWhitelist = 'smart contract whitelist'
+export type RpcFeatureSmartContractMethodChecks = 'smart contract method checks'
+export type RpcFeature =
+    RpcFeatureFree
+    | RpcFeatureLoadBalance
+    | RpcFeaturePrivacy
+    | RpcFeatureMevProtection
+    | RpcFeaturePhishingProtection
+    | RpcFeatureSmartContractWhitelist
+    | RpcFeatureSmartContractMethodChecks
 
 export interface RpcService {
-    getRpcList: (chainId: number) => RpcList | Promise<RpcList>
+    getRpcList: (chainId: number, apiKey?: string) => RpcList | Promise<RpcList>
     hasRpc?(url: RpcUrl): boolean
     getFeatures?(): Array<RpcFeature>
 }
@@ -36,6 +49,8 @@ export function registerRpcService(service: RpcService): void {
 
 // register all pre-built rpc services
 registerRpcService(new ViemService())
+registerRpcService(new FlashbotsService())
+registerRpcService(new OneRpcService())
 
 export interface ApiKeys {
     INFURA_API_KEY?: string

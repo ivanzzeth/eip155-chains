@@ -8,6 +8,10 @@ export async function getEthersProvider(chainId: number, options?: Options): Pro
     const chain = await getChainById(chainId, options)
 
     let providersConfigs: Array<FallbackProviderConfig> = chain.rpcList.map((rpc) => {
+        if (!rpc.url.startsWith("https://")) {
+            return null
+        }
+
         // Double check
         try {
             let provider: Provider

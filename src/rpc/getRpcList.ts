@@ -1,6 +1,9 @@
+import {BaseProvider, JsonRpcProvider, WebSocketProvider} from '@ethersproject/providers'
+
 import { ApiKeys, filterRpcListByFeatures, Filters, fulfillRpcFeatures, isValidRpcProtocol, registeredRpcServices, RPC_TIMEOUT, RpcList, RpcUrl } from "."
 import { RpcNotFound } from "../errors"
 import { sleep } from "../utils"
+import { destroyEthersProvider } from '../provider'
 
 export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, healthyCheckEanbled = false, apiKeys?: ApiKeys, filters?: Filters): Promise<RpcList> {
     const rpcs: RpcList = []
@@ -74,16 +77,12 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, hea
 export async function healthyCheck(rpcs: RpcList): Promise<RpcList> {
     rpcs = await Promise.all(
         rpcs.map(async (rpc) => {
-            // eslint-disable-next-line @typescript-eslint/no-var-requires
-            const ethers = require('ethers')
-            const jsonRpcProvider = ethers.providers ? ethers.providers.JsonRpcProvider : ethers.JsonRpcProvider
-            const wsRpcProvider = ethers.providers ? ethers.providers.WebSocketProvider : ethers.WebSocketProvider
 
-            let provider
-            if (jsonRpcProvider && rpc.url.startsWith("http://") || rpc.url.startsWith("https://")) {
-                provider = new jsonRpcProvider(rpc.url)
-            } else if (wsRpcProvider && rpc.url.startsWith("ws://") || rpc.url.startsWith("wss://")) {
-                provider = new wsRpcProvider(rpc.url)
+            let provider: BaseProvider
+            if (rpc.url.startsWith("http://") || rpc.url.startsWith("https://")) {
+                provider = new JsonRpcProvider(rpc.url)
+            } else if (rpc.url.startsWith("ws://") || rpc.url.startsWith("wss://")) {
+                provider = new WebSocketProvider(rpc.url)
             } else {
                 return null
             }
@@ -102,9 +101,8 @@ export async function healthyCheck(rpcs: RpcList): Promise<RpcList> {
                 // empty
             }
 
-            if (provider && provider.destroy) {
-                await provider.destroy()
-            }
+            // Release provider
+            await destroyEthersProvider(provider)
 
             if (ok) {
                 return rpc

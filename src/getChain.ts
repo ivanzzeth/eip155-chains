@@ -1,6 +1,6 @@
 import { Chain } from "eth-chains";
 import { getChainMetadataById } from "./getEIP155ChainMetadata";
-import { ApiKeys, getRpcsByChainId, ClassifiedRpc, splitRpcsByProtocol } from './getRpcs';
+import { ApiKeys, getRpcsByChainId, ClassifiedRpc, splitRpcsByProtocol, RpcUrl } from './rpc';
 import { ChainNotFound } from "./errors";
 
 export interface EIP155Chain extends Chain {
@@ -18,10 +18,11 @@ export async function getChainById(chainId: number, options?: Options): Promise<
         throw ChainNotFound
     }
 
-    chain.rpc = await getRpcsByChainId(chainId, chain.rpc, options ? options.healthyCheckEnabled : false, options)
-    
+    const rpcList = await getRpcsByChainId(chainId, chain.rpc.map(v =>  { return {url: v as RpcUrl} }), options ? options.healthyCheckEnabled : false, options)
+    chain.rpc = rpcList.map(rpc => rpc.url)
+
     return {
         ...chain,
-        classifiedRpc: splitRpcsByProtocol(chain.rpc)
+        classifiedRpc: splitRpcsByProtocol(rpcList)
     }
 }

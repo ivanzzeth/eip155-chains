@@ -1,4 +1,4 @@
-import { ApiKeys, isValidRpcProtocol, registeredRpcServices, RPC_TIMEOUT, RpcList, RpcUrl } from "."
+import { ApiKeys, fulfillRpcFeatures, isValidRpcProtocol, registeredRpcServices, RPC_TIMEOUT, RpcList, RpcUrl } from "."
 import { RpcNotFound } from "../errors"
 import { sleep } from "../utils"
 
@@ -56,6 +56,8 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, hea
     if (res.length == 0) {
         throw RpcNotFound
     }
+
+    fulfillRpcFeatures(res)
 
     return res
 }

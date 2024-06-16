@@ -1,4 +1,4 @@
-import { ClassifiedRpc, RpcList } from "."
+import { ClassifiedRpc, registeredRpcServices, RpcList } from "."
 
 export function splitRpcsByProtocol(rpcs: RpcList): ClassifiedRpc {
     const classifiedRpc: ClassifiedRpc = {
@@ -21,6 +21,17 @@ export function splitRpcsByProtocol(rpcs: RpcList): ClassifiedRpc {
     }
 
     return classifiedRpc
+}
+
+export function fulfillRpcFeatures(rpcs: RpcList): void {
+    for (const rpc of rpcs) {
+        for (const service of registeredRpcServices) {
+            if (service.hasRpc && service.getFeatures && service.hasRpc(rpc.url)) {
+                rpc.features = service.getFeatures()
+                break
+            }
+        }
+    }
 }
 
 export function isValidRpcProtocol(rpc: string): boolean {

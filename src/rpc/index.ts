@@ -25,7 +25,7 @@ export type RpcFeature = RpcFeaturePrivacy | RpcFeatureMevProtection | RpcFeatur
 export interface RpcService {
     getRpcList: (chainId: number) => RpcList | Promise<RpcList>
     hasRpc?(url: RpcUrl): boolean
-    getFeatures?(url: RpcUrl): Array<RpcFeature>
+    getFeatures?(): Array<RpcFeature>
 }
 
 export const registeredRpcServices: Array<RpcService> = []

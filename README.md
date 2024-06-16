@@ -8,7 +8,7 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release][semantic-release-img]][semantic-release-url]
 
-> Aggregate all eip155 chains in one place.
+> Aggregate all eip155 chains from multiple sources in one place.
 
 # Usage
 
@@ -16,22 +16,30 @@
 import { ethers } from 'ethers';
 import { getChainById } from 'eip155-chains';
 
-const chainInfo = await getChainById(chainId, {
-  INFURA_API_KEY: 'Your INFURA_API_KEY',
-  ALCHEMY_API_KEY: 'Your ALCHEMY_API_KEY'
-})
+const options = {
+  apiKey: {
+    INFURA_API_KEY: 'Your INFURA_API_KEY',
+    ALCHEMY_API_KEY: 'Your ALCHEMY_API_KEY'
+  },
+  healthyCheckEnabled: true,
+  filters: {
+    features: ['privacy']
+  }
+}
+
+const chainInfo = await getChainById(chainId, options)
 console.log(`rpcs: `, chainInfo.rpc)
 console.log(`classifiedRpc.https: ${chainInfo.classifiedRpc.https}`)
 
 // You can use https only
-// const providers = chainInfo.classifiedRpc.https.map(v => new ethers.JsonRpcProvider(v))
+// const providers = chainInfo.classifiedRpc.https.map(rpc => new ethers.JsonRpcProvider(rpc.url))
 
 // or setup provider according to protocol
-const providers = chainInfo.rpc.map(rpc => {
-  if (jsonRpcProvider && rpc.startsWith("http://") || rpc.startsWith("https://")) {
-    return new jsonRpcProvider(rpc)
-  } else /** if (wsRpcProvider && rpc.startsWith("ws://") || rpc.startsWith("wss://")) */ {
-    return new wsRpcProvider(rpc)
+const providers = chainInfo.rpc.map(url => {
+  if (jsonRpcProvider && url.startsWith("http://") || url.startsWith("https://")) {
+    return new jsonRpcProvider(url)
+  } else /** if (wsRpcProvider && url.startsWith("ws://") || url.startsWith("wss://")) */ {
+    return new wsRpcProvider(url)
   }
 })
 
@@ -52,6 +60,8 @@ Rpc nodes sources:
 
 - viem chains definition
 - [chainid.network](https://chainid.network/chains.json)
+- [1rpc](https://www.1rpc.io/)
+- [flashbots](https://docs.flashbots.net/flashbots-protect/quick-start)
 
 [build-img]:https://github.com/ryansonshine/typescript-npm-package-template/actions/workflows/release.yml/badge.svg
 [build-url]:https://github.com/ryansonshine/typescript-npm-package-template/actions/workflows/release.yml

@@ -2,8 +2,10 @@ import { Chain } from "eth-chains";
 import { getChainMetadataById } from "./getEIP155ChainMetadata";
 import { ApiKeys, getRpcsByChainId, ClassifiedRpc, splitRpcsByProtocol, RpcUrl, Filters } from './rpc';
 import { ChainNotFound } from "./errors";
+import { RpcList } from "./rpc";
 
 export interface EIP155Chain extends Chain {
+    rpcList: RpcList
     classifiedRpc: ClassifiedRpc
 }
 
@@ -31,6 +33,7 @@ export async function getChainById(chainId: number, options?: Options): Promise<
 
     return {
         ...chain,
+        rpcList,
         classifiedRpc: splitRpcsByProtocol(rpcList)
     }
 }

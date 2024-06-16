@@ -77,7 +77,8 @@ export async function getRpcsByChainId(chainId: number, extraRpcs?: RpcList, hea
 export async function healthyCheck(rpcs: RpcList): Promise<RpcList> {
     rpcs = await Promise.all(
         rpcs.map(async (rpc) => {
-
+            const startTime = Date.now()
+            let latency: number = -1
             let provider: BaseProvider
             if (rpc.url.startsWith("http://") || rpc.url.startsWith("https://")) {
                 provider = new JsonRpcProvider(rpc.url)
@@ -97,6 +98,7 @@ export async function healthyCheck(rpcs: RpcList): Promise<RpcList> {
                 )
 
                 ok = number > 0
+                latency = Date.now() - startTime
             } catch {
                 // empty
             }
@@ -105,6 +107,7 @@ export async function healthyCheck(rpcs: RpcList): Promise<RpcList> {
             await destroyEthersProvider(provider)
 
             if (ok) {
+                rpc.latency = latency
                 return rpc
             }
             

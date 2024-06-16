@@ -9,6 +9,7 @@ export interface ClassifiedRpc {
 
 export interface RPC {
     url: RpcUrl
+    latency?: number // ms
     features?: Array<RpcFeature>
 }
 

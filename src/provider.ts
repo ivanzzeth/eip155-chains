@@ -1,17 +1,26 @@
-import { BaseProvider, FallbackProvider, JsonRpcProvider, WebSocketProvider } from "@ethersproject/providers";
+import { FallbackProvider, FallbackProviderConfig, JsonRpcProvider, Provider, WebSocketProvider } from "@ethersproject/providers";
 import { getChainById } from "./getChain";
 import { Options, RpcNotFound } from ".";
 
-export async function getEthersProvider(chainId: number, options?: Options): Promise<[BaseProvider, () => Promise<void>]> {
+const ProviderStallTimeoutMultiplier = 3
+
+export async function getEthersProvider(chainId: number, options?: Options): Promise<[Provider, () => Promise<void>]> {
     const chain = await getChainById(chainId, options)
 
-    let providers = chain.rpc.map((rpc) => {
+    let providersConfigs: Array<FallbackProviderConfig> = chain.rpcList.map((rpc) => {
         // Double check
         try {
-            if (rpc.startsWith('http://') || rpc.startsWith('https://')) {
-                return new JsonRpcProvider(rpc)
+            let provider: Provider
+            if (rpc.url.startsWith('http://') || rpc.url.startsWith('https://')) {
+                provider = new JsonRpcProvider(rpc.url)
             } else {
-                return new WebSocketProvider(rpc)
+                provider = new WebSocketProvider(rpc.url)
+            }
+
+            return {
+                provider,
+                stallTimeout: rpc.latency * ProviderStallTimeoutMultiplier,
+                priority: rpc.latency,
             }
         } catch (e) { /* empty */ }
         
@@ -19,24 +28,24 @@ export async function getEthersProvider(chainId: number, options?: Options): Pro
     })
 
     // Remove invalid providers
-    providers = providers.filter(v => v != null)
+    providersConfigs = providersConfigs.filter(v => v != null)
 
-    if (providers.length == 0) {
+    if (providersConfigs.length == 0) {
         throw RpcNotFound
     }
 
-    if (providers.length == 1) {
-        return [providers[0], async () => destroyEthersProvider(provider)]
+    if (providersConfigs.length == 1) {
+        return [providersConfigs[0].provider, async () => destroyEthersProvider(providersConfigs[0].provider)]
     }
 
-    const provider = new FallbackProvider(providers)
+    const provider = new FallbackProvider(providersConfigs)
     return [provider, async () => {
         await destroyEthersProvider(provider)
-        await Promise.all(providers.map(provider => destroyEthersProvider(provider)))
+        await Promise.all(providersConfigs.map(config => destroyEthersProvider(config.provider)))
     }]
 }
 
-export async function destroyEthersProvider(provider: BaseProvider): Promise<void> {
+export async function destroyEthersProvider(provider: Provider): Promise<void> {
     if (provider && (provider as any).destroy) {
         await (provider as any).destroy()
     }

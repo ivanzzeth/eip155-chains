@@ -10,4 +10,4 @@
 
 ## Source
 
-[src/errors.ts:4](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/errors.ts#L4)
+[src/errors.ts:4](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/errors.ts#L4)

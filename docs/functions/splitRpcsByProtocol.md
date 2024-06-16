@@ -10,7 +10,7 @@
 
 ## Parameters
 
-• **rpcs**: `string`[]
+• **rpcs**: [`RpcList`](../type-aliases/RpcList.md)
 
 ## Returns
 
@@ -18,4 +18,4 @@
 
 ## Source
 
-[src/getRpcs.ts:69](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L69)
+[src/rpc/utils.ts:3](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/rpc/utils.ts#L3)

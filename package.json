@@ -1,6 +1,6 @@
 {
   "name": "eip155-chains",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Aggregate all eip155 chains from multiple sources in one place.",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

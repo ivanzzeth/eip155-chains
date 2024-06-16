@@ -10,38 +10,38 @@
 
 ### http
 
-> **http**: `string`[]
+> **http**: [`RPC`](RPC.md)[]
 
 #### Source
 
-[src/getRpcs.ts:11](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L11)
+[src/rpc/index.ts:4](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/rpc/index.ts#L4)
 
 ***
 
 ### https
 
-> **https**: `string`[]
+> **https**: [`RPC`](RPC.md)[]
 
 #### Source
 
-[src/getRpcs.ts:12](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L12)
+[src/rpc/index.ts:5](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/rpc/index.ts#L5)
 
 ***
 
 ### ws
 
-> **ws**: `string`[]
+> **ws**: [`RPC`](RPC.md)[]
 
 #### Source
 
-[src/getRpcs.ts:13](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L13)
+[src/rpc/index.ts:6](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/rpc/index.ts#L6)
 
 ***
 
 ### wss
 
-> **wss**: `string`[]
+> **wss**: [`RPC`](RPC.md)[]
 
 #### Source
 
-[src/getRpcs.ts:14](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L14)
+[src/rpc/index.ts:7](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/rpc/index.ts#L7)

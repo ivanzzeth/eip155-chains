@@ -6,22 +6,24 @@
 
 # Function: getRpcsByChainId()
 
-> **getRpcsByChainId**(`chainId`, `extraRpcs`?, `healthyCheckEanbled`?, `apiKeys`?): `Promise`\<`string`[]\>
+> **getRpcsByChainId**(`chainId`, `extraRpcs`?, `healthyCheckEanbled`?, `apiKeys`?, `filters`?): `Promise`\<[`RpcList`](../type-aliases/RpcList.md)\>
 
 ## Parameters
 
 • **chainId**: `number`
 
-• **extraRpcs?**: `string`[]
+• **extraRpcs?**: [`RpcList`](../type-aliases/RpcList.md)
 
 • **healthyCheckEanbled?**: `boolean`= `false`
 
 • **apiKeys?**: [`ApiKeys`](../interfaces/ApiKeys.md)
 
+• **filters?**: [`Filters`](../interfaces/Filters.md)
+
 ## Returns
 
-`Promise`\<`string`[]\>
+`Promise`\<[`RpcList`](../type-aliases/RpcList.md)\>
 
 ## Source
 
-[src/getRpcs.ts:19](https://github.com/ivanzzeth/eip155-chains/blob/22c7ef2cf5ad8b30c8773b9a336fe5b8ea173773/src/getRpcs.ts#L19)
+[src/rpc/getRpcList.ts:5](https://github.com/ivanzzeth/eip155-chains/blob/1338acd729e1930017264c44f09e203c6cd544d3/src/rpc/getRpcList.ts#L5)

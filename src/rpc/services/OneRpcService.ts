@@ -117,7 +117,7 @@ export class OneRpcService implements RpcService {
   }
 
   hasRpc(url: RpcUrl): boolean {
-    return url.includes('flashbots.net');
+    return url.includes('1rpc.io');
   }
 
   getFeatures(): Array<RpcFeature> {

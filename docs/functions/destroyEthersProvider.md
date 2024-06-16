@@ -10,7 +10,7 @@
 
 ## Parameters
 
-• **provider**: `BaseProvider`
+• **provider**: `Provider`
 
 ## Returns
 
@@ -18,4 +18,4 @@
 
 ## Source
 
-[src/provider.ts:39](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/provider.ts#L39)
+[src/provider.ts:52](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/provider.ts#L52)

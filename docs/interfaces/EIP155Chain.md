@@ -46,7 +46,7 @@ node\_modules/.pnpm/eth-chains@2.0.0/node\_modules/eth-chains/dist/src/types.d.t
 
 #### Source
 
-[src/getChain.ts:7](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/getChain.ts#L7)
+[src/getChain.ts:9](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/getChain.ts#L9)
 
 ***
 
@@ -233,6 +233,16 @@ node\_modules/.pnpm/eth-chains@2.0.0/node\_modules/eth-chains/dist/src/types.d.t
 #### Source
 
 node\_modules/.pnpm/eth-chains@2.0.0/node\_modules/eth-chains/dist/src/types.d.ts:10
+
+***
+
+### rpcList
+
+> **rpcList**: [`RpcList`](../type-aliases/RpcList.md)
+
+#### Source
+
+[src/getChain.ts:8](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/getChain.ts#L8)
 
 ***
 

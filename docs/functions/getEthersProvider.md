@@ -6,7 +6,7 @@
 
 # Function: getEthersProvider()
 
-> **getEthersProvider**(`chainId`, `options`?): `Promise`\<[`BaseProvider`, () => `Promise`\<`void`\>]\>
+> **getEthersProvider**(`chainId`, `options`?): `Promise`\<[`Provider`, () => `Promise`\<`void`\>]\>
 
 ## Parameters
 
@@ -16,8 +16,8 @@
 
 ## Returns
 
-`Promise`\<[`BaseProvider`, () => `Promise`\<`void`\>]\>
+`Promise`\<[`Provider`, () => `Promise`\<`void`\>]\>
 
 ## Source
 
-[src/provider.ts:5](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/provider.ts#L5)
+[src/provider.ts:7](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/provider.ts#L7)

@@ -24,7 +24,7 @@
 
 #### Source
 
-[src/rpc/index.ts:39](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/rpc/index.ts#L39)
+[src/rpc/index.ts:40](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/rpc/index.ts#L40)
 
 ## Methods
 
@@ -38,7 +38,7 @@
 
 #### Source
 
-[src/rpc/index.ts:41](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/rpc/index.ts#L41)
+[src/rpc/index.ts:42](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/rpc/index.ts#L42)
 
 ***
 
@@ -56,4 +56,4 @@
 
 #### Source
 
-[src/rpc/index.ts:40](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/rpc/index.ts#L40)
+[src/rpc/index.ts:41](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/rpc/index.ts#L41)

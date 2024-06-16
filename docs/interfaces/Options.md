@@ -14,7 +14,7 @@
 
 #### Source
 
-[src/getChain.ts:11](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/getChain.ts#L11)
+[src/getChain.ts:13](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/getChain.ts#L13)
 
 ***
 
@@ -24,7 +24,7 @@
 
 #### Source
 
-[src/getChain.ts:13](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/getChain.ts#L13)
+[src/getChain.ts:15](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/getChain.ts#L15)
 
 ***
 
@@ -34,4 +34,4 @@
 
 #### Source
 
-[src/getChain.ts:12](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/getChain.ts#L12)
+[src/getChain.ts:14](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/getChain.ts#L14)

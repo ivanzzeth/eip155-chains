@@ -10,4 +10,4 @@
 
 ## Source
 
-[src/rpc/index.ts:65](https://github.com/ivanzzeth/eip155-chains/blob/79a991ef2c76d4c7ef198819db7421c4151b4602/src/rpc/index.ts#L65)
+[src/rpc/index.ts:66](https://github.com/ivanzzeth/eip155-chains/blob/400ef11db8a06981938f7415f945494cf060a7cb/src/rpc/index.ts#L66)

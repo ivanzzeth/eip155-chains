@@ -81,9 +81,9 @@ export async function healthyCheck(rpcs: RpcList): Promise<RpcList> {
 
             let provider
             if (jsonRpcProvider && rpc.url.startsWith("http://") || rpc.url.startsWith("https://")) {
-                provider = new jsonRpcProvider(rpc)
+                provider = new jsonRpcProvider(rpc.url)
             } else if (wsRpcProvider && rpc.url.startsWith("ws://") || rpc.url.startsWith("wss://")) {
-                provider = new wsRpcProvider(rpc)
+                provider = new wsRpcProvider(rpc.url)
             } else {
                 return null
             }
